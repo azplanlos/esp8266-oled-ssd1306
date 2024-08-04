@@ -193,7 +193,7 @@ class OLEDDisplayUi {
     /**
      * Disable automatic transition to next frame.
      */
-    void disableAutoTransition(bool calculateTics);
+    void disableAutoTransition(bool calculateTicks = false);
 
     /**
      * Set the direction if the automatic transitioning
