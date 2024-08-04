@@ -1066,8 +1066,8 @@ void OLEDDisplay::sendInitCommands(void) {
   sendCommand(0x14);
   sendCommand(MEMORYMODE);
   sendCommand(0x00);
-  sendCommand(SEGREMAP);
-  sendCommand(COMSCANINC);
+  sendCommand(SEGREMAP | 0x01);
+  sendCommand(COMSCANDEC);           //Rotate screen 180 Deg
   sendCommand(SETCOMPINS);
 
   if (geometry == GEOMETRY_128_64 || geometry == GEOMETRY_64_48 || geometry == GEOMETRY_64_32) {
