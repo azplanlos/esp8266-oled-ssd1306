@@ -84,8 +84,9 @@ void OLEDDisplayUi::setTargetFPS(uint8_t fps){
 void OLEDDisplayUi::enableAutoTransition(){
   this->autoTransition = true;
 }
-void OLEDDisplayUi::disableAutoTransition(){
+void OLEDDisplayUi::disableAutoTransition(bool calculateTicks){
   this->autoTransition = false;
+  this->calculateTicks = calculateTicks;
 }
 void OLEDDisplayUi::setAutoTransitionForwards(){
   this->state.frameTransitionDirection = 1;
@@ -238,7 +239,7 @@ int16_t OLEDDisplayUi::update(){
   int32_t timeBudget = this->updateInterval - (frameStart - this->state.lastUpdate);
   if ( timeBudget <= 0) {
     // Implement frame skipping to ensure time budget is kept
-    if (this->autoTransition && this->state.lastUpdate != 0) this->state.ticksSinceLastStateSwitch += ceil((double)-timeBudget / (double)this->updateInterval);
+    if ((this->autoTransition || this->calculateTicks) && this->state.lastUpdate != 0) this->state.ticksSinceLastStateSwitch += ceil((double)-timeBudget / (double)this->updateInterval);
 
     this->state.lastUpdate = frameStart;
     this->tick();
