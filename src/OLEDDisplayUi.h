@@ -132,6 +132,7 @@ class OLEDDisplayUi {
     uint16_t            ticksPerTransition;	// ~  500ms at 30 FPS
 
     bool                autoTransition;
+    bool                calculateTicks;
 
     FrameCallback*      frameFunctions;
     uint8_t             frameCount;
@@ -192,7 +193,7 @@ class OLEDDisplayUi {
     /**
      * Disable automatic transition to next frame.
      */
-    void disableAutoTransition();
+    void disableAutoTransition(bool calculateTics);
 
     /**
      * Set the direction if the automatic transitioning
