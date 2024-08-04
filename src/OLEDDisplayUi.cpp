@@ -62,6 +62,7 @@ OLEDDisplayUi::OLEDDisplayUi(OLEDDisplay *display) {
   state.isIndicatorDrawn = true;
   state.manualControl = false;
   state.userData = NULL;
+  calculateTicks = false;
   shouldDrawIndicators = true;
   autoTransition = true;
   setTimePerFrame(5000);
